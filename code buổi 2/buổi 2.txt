@@ -1,0 +1,55 @@
+hieu@hieu-virtual-machine:~$ redis-cli
+127.0.0.1:6379> set name hieu
+OK
+127.0.0.1:6379> get name 
+"hieu"
+127.0.0.1:6379> get myname 
+(nil)
+127.0.0.1:6379> exists name 
+(integer) 1
+127.0.0.1:6379> exists myname 
+(integer) 0
+127.0.0.1:6379> del name 
+(integer) 1
+127.0.0.1:6379> exists name 
+(integer) 0
+
+127.0.0.1:6379> set name nhom7
+OK
+127.0.0.1:6379> expire name 20
+(integer) 1
+127.0.0.1:6379> ttl name
+(integer) 9
+127.0.0.1:6379> ttl name 
+(integer) 4
+127.0.0.1:6379> ttl name 
+(integer) -2
+127.0.0.1:6379> exists name 
+(integer) 0
+127.0.0.1:6379> set name minhhieu
+OK
+127.0.0.1:6379> strlen name 
+(integer) 8
+
+127.0.0.1:6379> rpush name hieu
+(integer) 1
+127.0.0.1:6379> rpush name lo 
+(integer) 2
+127.0.0.1:6379> lpush name minh 
+(integer) 3
+127.0.0.1:6379> lrange name 0 -1
+1) "minh"
+2) "hieu"
+3) "lo"
+127.0.0.1:6379> lpop name 
+"minh"
+127.0.0.1:6379> rpop name 
+"lo"
+127.0.0.1:6379> lrange name 0 -1
+1) "hieu"
+127.0.0.1:6379> llen name 
+(integer) 1
+127.0.0.1:6379> del name 
+(integer) 1
+127.0.0.1:6379> 
+

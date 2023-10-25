@@ -1,0 +1,16 @@
+ví dụ tính tổng
+from pyspark import SparkContext
+sc = SparkContext("local", "Spark RDD Example")
+
+# Tạo một RDD từ một danh sách các số nguyên
+numbers = sc.parallelize([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+
+# Tính toán tổng của các phần tử trong RDD
+sum_numbers = numbers.reduce(lambda x, y: x + y)
+
+# Tính toán trung bình của RDD
+average = sum_numbers / numbers.count()
+
+# In kết quả
+print("Tổng của các số trong RDD: ", sum_numbers)
+print("Trung bình của RDD: ", average)
